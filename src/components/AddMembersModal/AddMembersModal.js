@@ -3,20 +3,21 @@
  * @flow
  */
 
-import type { SelectorState } from '../../entities';
-import type { PeerInfo, Group } from '@dlghq/dialog-types';
-import React, { PureComponent } from 'react';
-import classNames from 'classnames';
-import { Text } from '@dlghq/react-l10n';
-import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
-import ModalHeader from '../Modal/ModalHeader';
-import ModalBody from '../Modal/ModalBody';
-import ModalFooter from '../Modal/ModalFooter';
-import ModalClose from '../Modal/ModalClose';
-import ContactSelector from '../ContactSelector/ContactSelector';
-import styles from './AddMembersModal.css';
-import HotKeys from '../HotKeys/HotKeys';
+import type { SelectorState } from "../../entities";
+import type { PeerInfo, Group } from "@dlghq/dialog-types";
+import React, { PureComponent } from "react";
+import classNames from "classnames";
+import { Text } from "@dlghq/react-l10n";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import ModalHeader from "../Modal/ModalHeader";
+import ModalBody from "../Modal/ModalBody";
+import ModalFooter from "../Modal/ModalFooter";
+import ModalClose from "../Modal/ModalClose";
+import ContactSelector from "../ContactSelector/ContactSelector";
+import styles from "./AddMembersModal.css";
+import HotKeys from "../HotKeys/HotKeys";
+import ContactSelectorInput from "../ContactSelector/ContactSelectorInput";
 
 export type Props = {
   className?: string,
@@ -26,7 +27,12 @@ export type Props = {
   autoFocus: boolean,
   onClose: () => mixed,
   onSubmit: (gid: number, uids: number[]) => mixed,
-  onChange: (selector: SelectorState<PeerInfo>) => mixed
+  onChange: (selector: SelectorState<PeerInfo>) => mixed,
+  updateRemotePeersInSelector?: (selector: SelectorState<PeerInfo>, query: string) => mixed,
+  setQuery?: (query: string)=> mixed,
+  query?: string,
+  isRemoteSearch?: boolean
+
 };
 
 class AddMembersModal extends PureComponent<Props> {
@@ -45,7 +51,7 @@ class AddMembersModal extends PureComponent<Props> {
   };
 
   handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
-    if (hotkey === 'Enter') {
+    if (hotkey === "Enter") {
       event.preventDefault();
       event.stopPropagation();
       this.handleSubmit();
@@ -59,14 +65,18 @@ class AddMembersModal extends PureComponent<Props> {
       <HotKeys onHotKey={this.handleHotkey}>
         <Modal className={className} onClose={this.handleClose}>
           <ModalHeader withBorder>
-            <Text id="AddMembersModal.title" />
-            <ModalClose onClick={this.handleClose} id="add_members_close_button" />
+            <Text id="AddMembersModal.title"/>
+            <ModalClose onClick={this.handleClose} id="add_members_close_button"/>
           </ModalHeader>
           <ModalBody className={styles.body}>
             <ContactSelector
               autoFocus={this.props.autoFocus}
               selector={this.props.selector}
               onChange={this.props.onChange}
+              updateRemotePeersInSelector={this.props.updateRemotePeersInSelector}
+              setQuery={this.props.setQuery}
+              query={this.props.query}
+              isRemoteSearch={this.props.isRemoteSearch}
             />
           </ModalBody>
           <ModalFooter className={styles.footer}>
@@ -78,7 +88,7 @@ class AddMembersModal extends PureComponent<Props> {
               onClick={this.handleSubmit}
               id="add_members_add_button"
             >
-              <Text id="AddMembersModal.button_add" />
+              <Text id="AddMembersModal.button_add"/>
             </Button>
           </ModalFooter>
         </Modal>

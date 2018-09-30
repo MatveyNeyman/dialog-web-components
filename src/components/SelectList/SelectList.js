@@ -3,12 +3,12 @@
  * @flow
  */
 
-import type { ListRowProps } from './types';
-import type { SelectorState } from '../../entities';
+import type { ListRowProps } from "./types";
+import type { SelectorState } from "../../entities";
 
-import React, { PureComponent, type Node } from 'react';
-import { List } from 'react-virtualized';
-import SelectRow from './SelectRow';
+import React, { PureComponent, type Node } from "react";
+import { List } from "react-virtualized";
+import SelectRow from "./SelectRow";
 
 export type ItemProps<T> = {
   item: T,
@@ -25,7 +25,9 @@ export type Props<T> = {
   selector: SelectorState<T>,
   onChange: (selector: SelectorState<T>) => mixed,
   renderItem: (props: ItemProps<T>) => Node,
-  renderEmpty?: () => Node
+  renderEmpty?: () => Node,
+  isRemoteSearch: boolean,
+  setQuery?: (query: string)=> mixed
 };
 
 class SelectList<T> extends PureComponent<Props<T>, void> {
@@ -41,6 +43,9 @@ class SelectList<T> extends PureComponent<Props<T>, void> {
         this.props.selector.getItem(index)
       )
     );
+    if (this.props.isRemoteSearch) {
+      this.props.setQuery("");
+    }
   };
 
   renderRow = ({ index, isScrolling, key, style }: ListRowProps) => {

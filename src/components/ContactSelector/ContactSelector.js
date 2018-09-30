@@ -16,7 +16,11 @@ export type Props = {
   className?: string,
   autoFocus: boolean,
   selector: SelectorState<PeerInfo>,
-  onChange: (selector: SelectorState<PeerInfo>) => mixed
+  onChange: (selector: SelectorState<PeerInfo>) => mixed,
+  updateRemotePeersInSelector?: (selector: SelectorState<PeerInfo>, query: string) => mixed,
+  setQuery?: (query: string)=> mixed,
+  query?: string,
+  isRemoteSearch?: boolean
 };
 
 class ContactSelector extends PureComponent<Props> {
@@ -29,10 +33,16 @@ class ContactSelector extends PureComponent<Props> {
           selector={this.props.selector}
           autoFocus={this.props.autoFocus}
           onChange={this.props.onChange}
+          updateRemotePeersInSelector={this.props.updateRemotePeersInSelector}
+          setQuery={this.props.setQuery}
+          query={this.props.query}
+          isRemoteSearch={this.props.isRemoteSearch}
         />
         <ContactList
           selector={this.props.selector}
           onChange={this.props.onChange}
+          setQuery={this.props.setQuery}
+          isRemoteSearch={this.props.isRemoteSearch}
         />
       </div>
     );

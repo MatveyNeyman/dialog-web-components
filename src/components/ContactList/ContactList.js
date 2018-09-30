@@ -15,7 +15,9 @@ import styles from './ContactList.css';
 export type Props = {
   className?: string,
   selector: SelectorState<PeerInfo>,
-  onChange: (selector: SelectorState<PeerInfo>) => mixed
+  onChange: (selector: SelectorState<PeerInfo>) => mixed,
+  isRemoteSearch?: boolean,
+  setQuery?: (query: string)=> mixed
 };
 
 function ContactList(props: Props) {
@@ -30,6 +32,8 @@ function ContactList(props: Props) {
         itemVisibleCount={8.5}
         selector={props.selector}
         onChange={props.onChange}
+        isRemoteSearch={this.props.isRemoteSearch}
+        setQuery={this.props.setQuery}
         renderItem={ContactListItem.render}
       />
     </div>
