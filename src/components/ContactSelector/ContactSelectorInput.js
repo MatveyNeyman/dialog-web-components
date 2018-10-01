@@ -3,14 +3,14 @@
  * @flow
  */
 
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import { debounce } from 'lodash';
-import type { PeerInfo } from "@dlghq/dialog-types";
-import { LocalizationContextType } from "@dlghq/react-l10n";
-import type { SelectorState } from "../../entities";
-import classNames from "classnames";
-import ContactSelectorChip from "./ContactSelectorChip";
-import styles from "./ContactSelector.css";
+import type { PeerInfo } from '@dlghq/dialog-types';
+import { LocalizationContextType } from '@dlghq/react-l10n';
+import type { SelectorState } from '../../entities';
+import classNames from 'classnames';
+import ContactSelectorChip from './ContactSelectorChip';
+import styles from './ContactSelector.css';
 
 export type Props = {
   className?: string,
@@ -18,7 +18,7 @@ export type Props = {
   selector: SelectorState<PeerInfo>,
   onChange: (selector: SelectorState<PeerInfo>) => mixed,
   updateRemotePeersInSelector?: (selector: SelectorState<PeerInfo>, query: string) => mixed,
-  setQuery?: (query: string)=> mixed,
+  setQuery?: (query: string) => mixed,
   query?: string,
   isRemoteSearch?: boolean
 };
@@ -64,7 +64,7 @@ class ContactSelectorInput extends PureComponent<Props> {
 
 
   getPlaceholder(): string {
-    return this.context.l10n.formatText("ContactSelector.search_placeholder");
+    return this.context.l10n.formatText('ContactSelector.search_placeholder');
   }
 
   setInput = (input: ?HTMLInputElement): void => {
@@ -85,13 +85,14 @@ class ContactSelectorInput extends PureComponent<Props> {
     const selected = this.props.selector.getSelected().toArray();
 
     return selected.map((contact) => {
-      return <ContactSelectorChip key={contact.peer.id} contact={contact}/>;
+      return <ContactSelectorChip key={contact.peer.id} contact={contact} />;
     });
   }
 
   render() {
     const className = classNames(styles.selector, this.props.className);
     const value = this.props.isRemoteSearch ? this.props.query : this.props.selector.getQuery();
+
     return (
       <div className={className}>
         {this.renderChips()}

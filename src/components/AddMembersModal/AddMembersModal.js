@@ -3,21 +3,20 @@
  * @flow
  */
 
-import type { SelectorState } from "../../entities";
-import type { PeerInfo, Group } from "@dlghq/dialog-types";
-import React, { PureComponent } from "react";
-import classNames from "classnames";
-import { Text } from "@dlghq/react-l10n";
-import Button from "../Button/Button";
-import Modal from "../Modal/Modal";
-import ModalHeader from "../Modal/ModalHeader";
-import ModalBody from "../Modal/ModalBody";
-import ModalFooter from "../Modal/ModalFooter";
-import ModalClose from "../Modal/ModalClose";
-import ContactSelector from "../ContactSelector/ContactSelector";
-import styles from "./AddMembersModal.css";
-import HotKeys from "../HotKeys/HotKeys";
-import ContactSelectorInput from "../ContactSelector/ContactSelectorInput";
+import type { SelectorState } from '../../entities';
+import type { PeerInfo, Group } from '@dlghq/dialog-types';
+import React, { PureComponent } from 'react';
+import classNames from 'classnames';
+import { Text } from '@dlghq/react-l10n';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
+import ModalHeader from '../Modal/ModalHeader';
+import ModalBody from '../Modal/ModalBody';
+import ModalFooter from '../Modal/ModalFooter';
+import ModalClose from '../Modal/ModalClose';
+import ContactSelector from '../ContactSelector/ContactSelector';
+import styles from './AddMembersModal.css';
+import HotKeys from '../HotKeys/HotKeys';
 
 export type Props = {
   className?: string,
@@ -51,7 +50,7 @@ class AddMembersModal extends PureComponent<Props> {
   };
 
   handleHotkey = (hotkey: string, event: KeyboardEvent): void => {
-    if (hotkey === "Enter") {
+    if (hotkey === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
       this.handleSubmit();
@@ -65,8 +64,8 @@ class AddMembersModal extends PureComponent<Props> {
       <HotKeys onHotKey={this.handleHotkey}>
         <Modal className={className} onClose={this.handleClose}>
           <ModalHeader withBorder>
-            <Text id="AddMembersModal.title"/>
-            <ModalClose onClick={this.handleClose} id="add_members_close_button"/>
+            <Text id="AddMembersModal.title" />
+            <ModalClose onClick={this.handleClose} id="add_members_close_button" />
           </ModalHeader>
           <ModalBody className={styles.body}>
             <ContactSelector
@@ -88,7 +87,7 @@ class AddMembersModal extends PureComponent<Props> {
               onClick={this.handleSubmit}
               id="add_members_add_button"
             >
-              <Text id="AddMembersModal.button_add"/>
+              <Text id="AddMembersModal.button_add" />
             </Button>
           </ModalFooter>
         </Modal>

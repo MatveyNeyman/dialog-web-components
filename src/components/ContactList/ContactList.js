@@ -17,7 +17,7 @@ export type Props = {
   selector: SelectorState<PeerInfo>,
   onChange: (selector: SelectorState<PeerInfo>) => mixed,
   isRemoteSearch?: boolean,
-  setQuery?: (query: string)=> mixed
+  setQuery?: (query: string) => mixed
 };
 
 function ContactList(props: Props) {
