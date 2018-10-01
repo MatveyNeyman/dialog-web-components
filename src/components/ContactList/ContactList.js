@@ -32,8 +32,8 @@ function ContactList(props: Props) {
         itemVisibleCount={8.5}
         selector={props.selector}
         onChange={props.onChange}
-        isRemoteSearch={this.props.isRemoteSearch}
-        setQuery={this.props.setQuery}
+        isRemoteSearch={props.isRemoteSearch}
+        setQuery={props.setQuery}
         renderItem={ContactListItem.render}
       />
     </div>
