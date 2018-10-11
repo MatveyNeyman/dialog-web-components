@@ -4,14 +4,14 @@
  */
 
 import type { Context } from './RadioGroup';
-import React, { PureComponent, type Node } from 'react';
+import React, { PureComponent, type Element, type ChildrenArray } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Radio.css';
 
 export type Props = {
   className?: string,
-  children?: Node,
+  children: ChildrenArray<Element<any>>,
   id?: string,
   value: string,
   tabIndex?: number,

@@ -1,0 +1,31 @@
+/*
+ * Copyright 2018 dialog LLC <info@dlg.im>
+ */
+
+@import '../../styles/variables.css';
+
+:root {
+  --modal-select-cert-font-family: var(--default-font-family);
+  --modal-select-cert-font-size: var(--default-font-size-large);
+  --modal-select-cert-width: 500px;
+  --modal-select-cert-details-color: var(--default-font-color-light);
+}
+
+/* Styles */
+.container {
+  width: var(--modal-select-cert-width);
+  font-family: var(--modal-select-cert-font-family);
+}
+
+.footer {
+  padding: 0;
+}
+
+.label {
+  font-size: var(--modal-select-cert-font-size);
+}
+
+.issuer {
+  color: var(--modal-select-cert-details-color);
+  margin-left: 1em;
+}

@@ -283,7 +283,6 @@ class CreateNewModal extends PureComponent<Props> {
         </ModalBody>
         <ModalFooter className={styles.footer}>
           <Button
-            className={styles.halfButton}
             onClick={this.handleSubmit}
             rounded={false}
             form={id}

@@ -80,7 +80,8 @@
       "AddMembersModal",
       "EditGroupModal",
       "FeedbackModal",
-      "AdminModal"
+      "AdminModal",
+      "SelectCertificateModal"
     ]
   },
   {
